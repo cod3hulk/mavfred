@@ -1,0 +1,40 @@
+{
+  "name": "mavfred",
+  "version": "0.0.0",
+  "description": "Alfred workflow for maven central",
+  "license": "MIT",
+  "repository": "cod3hulk/mavfred",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": "github.com/cod3hulk/mavfred"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava",
+    "postinstall": "alfy-init"
+  },
+  "files": [
+    "index.js",
+    "icon.png",
+    "info.plist"
+  ],
+  "keywords": [
+    "alfred",
+    "workflow",
+    ""
+  ],
+  "dependencies": {
+    "alfy": "^0.5.0"
+  },
+  "devDependencies": {
+    "alfy-test": "^0.3.0",
+    "ava": "^0.15.2",
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "esnext": true
+  }
+}
