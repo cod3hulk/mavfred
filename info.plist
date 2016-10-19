@@ -2,19 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>name</key>
-	<string>mavfred</string>
 	<key>bundleid</key>
 	<string>com.cod3hulk.mavfred</string>
 	<key>category</key>
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>5A3E3E4C-947A-4A24-B2DE-3F427C8E48F2</key>
+		<key>19B45003-8506-4F58-8DA5-A4F83E8A856D</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>CA89D7E6-115A-4042-BD0F-692343C06C13</string>
+				<string>747D0CB7-9627-405C-BB30-2BB82C0166E4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>75CA5320-F329-4B9E-81A1-8A36FA644521</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -23,30 +31,40 @@
 				<false/>
 			</dict>
 		</array>
+		<key>5A3E3E4C-947A-4A24-B2DE-3F427C8E48F2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>19B45003-8506-4F58-8DA5-A4F83E8A856D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>671B6E89-992B-4EF8-A006-31BD40DDA008</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Open maven central</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string></string>
 	<key>disabled</key>
 	<false/>
+	<key>name</key>
+	<string>mavfred</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>CA89D7E6-115A-4042-BD0F-692343C06C13</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -77,7 +95,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>mavfred</string>
+				<string>mvn</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -90,15 +108,109 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>import sys
+import xml.dom.minidom
+
+query = sys.argv[1]
+artifact = query.split("|")
+
+result = """
+&lt;dependency&gt;
+    &lt;groupId&gt;%s&lt;/groupId&gt;
+    &lt;artifactId&gt;%s&lt;/artifactId&gt;
+    &lt;version&gt;%s&lt;/version&gt;
+&lt;/dependency&gt;
+""" % (artifact[0], artifact[1], artifact[2])
+
+sys.stdout.write(result)</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>19B45003-8506-4F58-8DA5-A4F83E8A856D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>747D0CB7-9627-405C-BB30-2BB82C0166E4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Copied to clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>75CA5320-F329-4B9E-81A1-8A36FA644521</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>http://search.maven.org/#artifactdetails|{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>671B6E89-992B-4EF8-A006-31BD40DDA008</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>CA89D7E6-115A-4042-BD0F-692343C06C13</key>
+		<key>19B45003-8506-4F58-8DA5-A4F83E8A856D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>150</integer>
+			<integer>210</integer>
 			<key>ypos</key>
 			<integer>10</integer>
 		</dict>
@@ -109,6 +221,29 @@
 			<key>ypos</key>
 			<integer>10</integer>
 		</dict>
+		<key>671B6E89-992B-4EF8-A006-31BD40DDA008</key>
+		<dict>
+			<key>xpos</key>
+			<integer>210</integer>
+			<key>ypos</key>
+			<integer>160</integer>
+		</dict>
+		<key>747D0CB7-9627-405C-BB30-2BB82C0166E4</key>
+		<dict>
+			<key>xpos</key>
+			<integer>410</integer>
+			<key>ypos</key>
+			<integer>10</integer>
+		</dict>
+		<key>75CA5320-F329-4B9E-81A1-8A36FA644521</key>
+		<dict>
+			<key>xpos</key>
+			<integer>410</integer>
+			<key>ypos</key>
+			<integer>160</integer>
+		</dict>
 	</dict>
+	<key>webaddress</key>
+	<string></string>
 </dict>
 </plist>
